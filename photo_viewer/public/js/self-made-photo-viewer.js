@@ -1,34 +1,56 @@
 $(function(){
-  const viewItemWidth = $('.view-item').outerWidth(); // .view-itemの幅を取得して代入
-  const viewItemNum = $('.view-item').length;  // .view-itemの数を取得して代入
-  const viewerBoxWidth = viewItemWidth * viewItemNum;
+  var PhotoViewer = {
+    viewItemWidth: $('.view-item').outerWidth(),
+    viewItemNum: $('.view-item').length,
+    nowPosition : 0,
 
-  var nowPosition = 0;
+    /**
+     * Initialize PhotoViewer
+     */
+    init: function() {
+      $('.viewer-box').css('width', this.viewerBoxWidth());
+      this.handleEvnet();
+    },
+    /**
+     * Calculate the viewer box width
+     */
+    viewerBoxWidth: function(){
+      return this.viewItemWidth * this.viewItemNum
+    },
+    /**
+     * Slide with animation
+     */
+    slide: function() {
+      $('.viewer-box').animate({
+        left: this.nowPosition * -this.viewItemWidth
+      });
+    },
+    /**
+     * Managing events
+     */
+    handleEvnet: function() {
 
-  $('.viewer-box').css('width', viewerBoxWidth);
+      var self = this;
 
-  function slide() {
-    $('.viewer-box').animate({
-      left: nowPosition * -viewItemWidth
-    });
-  }
+      // Processing when the back button is clicked
+      $('#back').on('click', function () {
+        self.nowPosition--;
+        if (self.nowPosition < 0) {
+          self.nowPosition = self.viewItemNum - 1;
+        }
+        self.slide();
+      });
 
-  $('#back').on('click', function () {
-    nowPosition--;
-    console.log('left', nowPosition);
-    if (nowPosition < 0) {
-      nowPosition = viewItemNum - 1;
+      // Processing when the next button is clicked
+      $('#next').on('click', function() {
+        self.nowPosition++;
+        if (self.nowPosition > self.viewItemNum - 1) {
+          self.nowPosition = 0;
+        }
+        self.slide();
+      });
     }
-    slide();
-  });
+  };
 
-  $('#next').on('click', function () {
-    nowPosition++;
-    console.log('right', nowPosition);
-    if (nowPosition > viewItemNum - 1) {
-      nowPosition = 0;
-    }
-    slide();
-  });
-
+  PhotoViewer.init();
 });
