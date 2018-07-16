@@ -7,14 +7,22 @@
   </head>
   <body>
     <main>
-      <div class="slider">
-        <div class="slideSet">
-          <div class="slide"><img src="./public/img/img001.jpg" /></div>
-          <div class="slide"><img src="./public/img/img002.jpg" /></div>
-          <div class="slide"><img src="./public/img/img003.jpg" /></div>
-          <div class="slide"><img src="./public/img/img004.jpg" /></div>
-          <div class="slide"><img src="./public/img/img005.jpg" /></div>
+      <div class="viewer">
+        <div class="viewer-box">
+          <div class="view-item">
+            <img src="https://fakeimg.pl/250x150/bb0000/ffffff/?retina=1&text=1枚目&font=noto">
+          </div>
+          <div class="view-item">
+            <img src="https://fakeimg.pl/250x150/0000bb/ffffff/?retina=1&text=2枚目&font=noto">
+          </div>
+          <div class="view-item">
+            <img src="https://fakeimg.pl/250x150/00bb00/ffffff/?retina=1&text=3枚目&font=noto">
+          </div>
         </div>
+      </div>
+      <div class="switch">
+        <button id="back" class="switch-items"> < </button>
+        <button id="next" class="switch-items"> > </button>
       </div>
     </main>
     <script type="text/javascript" src="./public/js/jquery-3.3.1.js"></script>
