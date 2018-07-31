@@ -1,0 +1,33 @@
+.viewer {
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+.viewer .viewer-box {
+    position: absolute;
+}
+
+.viewer .view-item {
+    width: 250px;
+    height: 150px;
+    border: 1px #ffffff solid;
+    float: left;
+}
+
+.viewer .view-item img {
+    width: 100%;
+}
+
+.switch {
+    width: 250px;
+    height: 30px;
+    background-color: black;
+    text-align: center;
+}
+
+.switch .switch-items {
+    color: black;
+}
+
