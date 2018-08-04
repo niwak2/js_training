@@ -1,0 +1,42 @@
+.tabs{
+    list-style:none;
+    overflow : hidden;
+}
+
+.tab {
+    float : left;
+    background : #000000;
+    color: #FFFFFF;
+    padding : 5px 25px;
+    margin-right : 3px;
+}
+
+.tab.active {
+    float: left;
+    background: #FFFFFF;
+    color: #000000;
+    padding: 5px 25px;
+    margin-right: 3px;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+.tab-contents {
+    list-style:none;
+    margin-top: 0px;
+    width: 500px;
+}
+
+.tab-content {
+    display : none;
+    padding : 10px;
+}
+
+img{
+    width:100%;
+}
+
+.tab-content.active {
+    display: block;
+}
