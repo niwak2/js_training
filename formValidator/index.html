@@ -11,11 +11,15 @@
     <form action="./">
       <div class="form_group">
         <label>タイトル</label>
-        <input type="text" name="title" class="title">
+        <input type="text" name="title" class="title" data-valid="empty" data-max="10">
       </div>
       <div class="form_group">
         <label>本文</label>
-        <textarea name="desc" class="desc" cols="30" rows="10"></textarea>
+        <textarea name="desc" class="desc" cols="30" rows="10" data-valid="empty" data-max="25"></textarea>
+      </div>
+      <div class="form_group">
+        <label>任意の項目</label>
+        <textarea name="any" class="any" cols="25" rows="2" data-max="25"></textarea>
       </div>
       <button class="submit_btn">送信</button>
     </form>

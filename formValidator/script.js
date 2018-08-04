@@ -4,31 +4,53 @@ $(function(){
      * Constructor
      */
     constructor() {
+      this.error_messages = [];
       this.$form = $('form');
       this.$title = $('.title');
       this.$desc = $('.desc');
+      this.$any = $('.any');
       this.$errors = $('.errors');
       this.$submit_btn = $('.submit_btn');
       this.$submit_btn.prop('disabled', true);
+      this.eventHandle();
+    }
+
+    /**
+     * add error message
+     *
+     * @param $elem jQuery DOM element
+     * @return void
+     */
+    addErrorMessage($elem) {
+      let len = $elem.val().length;
+      let labelText = $elem.prev().text();
+
+      if ($elem.attr('data-valid')) {
+        if (len < 1) {
+          this.error_messages.push(labelText + 'は必須です');
+          return;
+        }
+      }
+      if ($elem.attr('data-max')) {
+        if (len > parseInt($elem.attr('data-max'))) {
+          this.error_messages.push(labelText + 'は' + $elem.attr('data-max') + '文字以内でお願い致します');
+        }
+      }
     }
 
     /**
      * validation method
      */
     validate() {
-      let error_messages = [];
-      let title_length = this.$title.val().length;
-      if (title_length < 1) error_messages.push('タイトルは必須です');
-      if (title_length > 10) error_messages.push('タイトルは10文字以内でお願いします');
-
-      let desc_length = this.$desc.val().length;
-      if (desc_length < 1) error_messages.push('本文は必須です');
-      if (desc_length > 25) error_messages.push('本文は25文字以内でお願いします');
+      this.error_messages = [];
+      this.addErrorMessage(this.$title);
+      this.addErrorMessage(this.$desc);
+      this.addErrorMessage(this.$any);
 
       this.$errors.html('');
-      if (error_messages.length > 0) {
-        for(let cnt=0; cnt < error_messages.length; cnt++) {
-          this.$errors.append('<li>' + error_messages[cnt] + '</li>');
+      if (this.error_messages.length > 0) {
+        for(let cnt=0; cnt < this.error_messages.length; cnt++) {
+          this.$errors.append('<li>' + this.error_messages[cnt] + '</li>');
         }
         this.$submit_btn.prop('disabled', true);
       } else {
@@ -55,10 +77,13 @@ $(function(){
       this.$desc.on('keyup', function(){
         self.validate();
       });
+
+      this.$any.on('keyup', function(){
+        self.validate();
+      });
     }
   }
 
   let v = new Validator();
-  v.eventHandle();
 });
 
