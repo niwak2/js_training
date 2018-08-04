@@ -1,6 +1,8 @@
 $(function(){
-  class Validater {
-
+  class Validator {
+    /**
+     * Constructor
+     */
     constructor() {
       this.$form = $('form');
       this.$title = $('.title');
@@ -10,6 +12,9 @@ $(function(){
       this.$submit_btn.prop('disabled', true);
     }
 
+    /**
+     * validation method
+     */
     validate() {
       let error_messages = [];
       let title_length = this.$title.val().length;
@@ -31,6 +36,9 @@ $(function(){
       }
     }
 
+    /**
+     * event Handler
+     */
     eventHandle() {
       var self = this;
       this.$form.on('submit', function(e){
@@ -50,7 +58,7 @@ $(function(){
     }
   }
 
-  let v = new Validater();
+  let v = new Validator();
   v.eventHandle();
 });
 
