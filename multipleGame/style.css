@@ -1,0 +1,30 @@
+html, body, div, header, section, p, span, form, lab
+el button {
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+.header {
+  background-color: #F9D535;
+  padding: 15px 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.contents {
+  padding: 30px;
+}
+
+#counter {
+  font-size: 30px;
+  margin-right: 30px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #F9D535;
+}
